@@ -48,3 +48,6 @@
 
 # bindary file
 /bin/*
+
+.vscode/*
+settings.json
