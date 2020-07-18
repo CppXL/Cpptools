@@ -1,1 +1,1 @@
-g++ src/main.cpp src/func.cpp -o bin/main.out 
+g++ src/main.cpp src/func.cpp -o bin/hexchange 
