@@ -28,34 +28,44 @@ void execnum(int stage_option_num, char* stage_arg_num, char* stage_arg_o) {
     case 'H':
     //16进制
         if(atoi(stage_arg_o) == 10)                     // 输出为10进制
-            std::cout << HEX << "进制" << stage_arg_num << "转换为10进制的结果为" << anyToDec(HEX, stage_arg_num) << std::endl;
+            std::cout << HEX << "进制" << stage_arg_num << "转换为10进制的结果为" << 
+                anyToDec(HEX, stage_arg_num) << std::endl;
         else{
             ans = anyToDec(HEX, stage_arg_num);
-            std::cout << HEX << "进制" << stage_arg_num << "转换为" << atoi(stage_arg_o) << "进制的结果为" 
+            std::cout << HEX << "进制" << stage_arg_num << "转换为" << 
+                atoi(stage_arg_o) << "进制的结果为" 
                 << DecToany(atoi(stage_arg_o), ans) << std::endl;
         }
         break;
     case 'O':
     // 8进制
         if(atoi(stage_arg_o) == 10)                     // 输出为10进制
-            std::cout << OCT << "进制" << stage_arg_num << "转换为10进制的结果为" << anyToDec(HEX, stage_arg_num) << std::endl;
+            std::cout << OCT << "进制" << stage_arg_num << "转换为10进制的结果为" 
+                << anyToDec(OCT, stage_arg_num) << std::endl;
         else{
             ans = anyToDec(OCT, stage_arg_num);
-            std::cout << OCT << "进制" << stage_arg_num << "转换为" << atoi(stage_arg_o) << "进制的结果为" << DecToany(atoi(stage_arg_o), ans) << std::endl;
+            std::cout << OCT << "进制" << stage_arg_num << "转换为" 
+                << atoi(stage_arg_o) << "进制的结果为" << 
+                    DecToany(atoi(stage_arg_o), ans) << std::endl;
         }
         break;
     case 'B':
     // 二进制
         if(atoi(stage_arg_o) == 10)                     // 输出为10进制
-            std::cout << BIN << "进制" << stage_arg_num << "转换为10进制的结果为" << anyToDec(HEX, stage_arg_num) << std::endl;
+            std::cout << BIN << "进制" << stage_arg_num << "转换为10进制的结果为" << 
+                anyToDec(BIN, stage_arg_num) << std::endl;
         else{
             ans = anyToDec(BIN, stage_arg_num);
-            std::cout << BIN << "进制" << stage_arg_num << "转换为" << atoi(stage_arg_o) << "进制的结果为" << DecToany(atoi(stage_arg_o), ans) << std::endl;
+            std::cout << BIN << "进制" << stage_arg_num << "转换为" << atoi(stage_arg_o) << 
+            "进制的结果为" << DecToany(atoi(stage_arg_o), ans) << std::endl;
         }
         break;
     case 'D':
     //十进制
-        std::cout << DEC << "进制" << stage_arg_num << "转换为" << atoi(stage_arg_o) << "进制的结果为" << DecToany(atoi(stage_arg_o), ans) << std::endl;
+        // std::cout << "输入10进制\n";
+        ans = stage_arg_num;
+        std::cout << DEC << "进制" << stage_arg_num << "转换为" << atoi(stage_arg_o) << 
+        "进制的结果为" << DecToany(atoi(stage_arg_o), ans) << std::endl;
         break;
     default:
         printf("格式错误\n");
@@ -176,6 +186,7 @@ inline std::string DecToany(int dec, std::string num) {
         std::cout << "输出进制不符" << std::endl;
         exit(EXIT_FAILURE);
     }
+    // std::cout << "\n转换后:" << atoi(ssSrc.str().c_str()) << "\tnum" << num << std::endl;
     return ssDes.str();
 // #endif
 }
