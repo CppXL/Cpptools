@@ -45,9 +45,9 @@ printf("%s with arg %s and index %d\n", long_options[option_index].name, optarg,
 #endif
             stage_option_num = option;
             stage_arg_num = optarg;
-#ifdef DEBUG
-            std::cout << "XXXX" << stage_option_num << std::endl;
-#endif
+// #ifdef DEBUG
+//             std::cout << "stage_option_num" << stage_option_num << std::endl;
+// #endif
             break;
         // 选择输出也一样用变量保存
         case 'o':

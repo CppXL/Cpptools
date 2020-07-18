@@ -85,18 +85,24 @@ inline std::string anyToDec(int src, char* num) {
     {
     case HEX:
         ssSrc >> std::hex >> n;
-        ssDes << n;
+        ssDes << std::dec << n;
         break;
     case OCT:
         ssSrc >> std::oct >> n;
-        ssDes << n;
+        ssDes << std::dec << n;
         break;
     case BIN:
         n = std::stoi(ssSrc.str(), nullptr, 2);
-        ssDes << n;
+        ssDes << std::dec << n;
         break;
     default:
-        std::cout << "输入和输出进制不能一样" << std::endl;
+        if(src == 10)
+            std::cout << "输入和输出进制不能一样" << std::endl;
+        else
+        {
+            std::cout << "请输入正确的原进制" << std::endl;
+        }
+        
         exit(EXIT_FAILURE);
         break;
     }
@@ -148,22 +154,26 @@ inline std::string DecToany(int dec, std::string num) {
     std::string s;
     ssSrc << num;
 	if(dec == HEX){
-		ssDes << std::hex << ssSrc.str();
+        ssDes << "0x";
+		ssDes << std::hex << atoi(ssSrc.str().c_str());
 	}
 	else if(dec == OCT) 
 	{
-		ssDes << std::oct << ssSrc.str();
+		ssDes << std::oct << atoi(ssSrc.str().c_str());
 	}
 	else if(dec == BIN)
 	{
 		ssSrc >> n;
-		
 		std::bitset<NUMSIZE> bitInt(n);
 		s = bitInt.to_string();
 		ssDes << s;
 	}
-    else{
+    else if(dec == DEC){
         std::cout << "输入和输出进制不能一样" << std::endl;
+        exit(EXIT_FAILURE);
+    }
+    else{
+        std::cout << "输出进制不符" << std::endl;
         exit(EXIT_FAILURE);
     }
     return ssDes.str();
